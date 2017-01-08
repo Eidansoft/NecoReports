@@ -83,10 +83,22 @@ WHERE ped.NPedido = $P{Numero_pedido_ps}]]>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="75" splitType="Stretch">
+		<band height="78" splitType="Stretch">
 			<image>
-				<reportElement x="0" y="0" width="180" height="70" uuid="abfea110-51e3-4e35-9e91-7ad56c0afeaf"/>
+				<reportElement x="0" y="0" width="210" height="70" uuid="abfea110-51e3-4e35-9e91-7ad56c0afeaf"/>
 				<imageExpression><![CDATA["necotex.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="430" y="0" width="61" height="50" uuid="21f8f566-41da-4c2f-be83-dacf013cdc73"/>
+				<imageExpression><![CDATA["style.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="368" y="11" width="70" height="30" uuid="fa7e90b2-5d66-49bd-93bc-5793c0235f5d"/>
+				<imageExpression><![CDATA["suyequi.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="480" y="-5" width="74" height="60" uuid="8b7df449-e0ea-4b03-bad1-a5efdafebcd1"/>
+				<imageExpression><![CDATA["letailleur.jpg"]]></imageExpression>
 			</image>
 		</band>
 	</title>
