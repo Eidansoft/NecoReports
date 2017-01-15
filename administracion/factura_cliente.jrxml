@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.1.0.final using JasperReports Library version 6.1.0  -->
+<!-- 2017-01-15T00:59:24 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Pedido_Ventas" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5f726b7b-bc29-4857-8a2a-373d90af100b">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
+	<parameter name="Numero_de_factura_ps" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT fac.NFactura, fac.Cliente, fac.FechaFactura, fac.ImporteBruto, fac.PIva1, fac.IIva1, fac.TotalFactura, fac.FormaPago, fac.PedidoCliente,
+	lin.Articulo, lin.Color, lin.Descripcion, lin.PrecioNeto, lin.Unidades, lin.Total SubTotal,
+	art.CCRefeJOFACM, art.Modelo,
+	cli.CIF, cli.Direccion, cli.Poblacion, cli.Provincia, cli.Postal, cli.Telefono, cli.Fax, cli.email
+FROM GCFacturas fac JOIN GCLinFacturas lin ON fac.RegFactura = lin.NumFactura
+	JOIN Clientes cli ON cli.RegCliente = fac.NumCliente
+	JOIN Articulos art ON lin.Codigo = art.Codigo
+WHERE fac.NFactura = $P{Numero_de_factura_ps}]]>
+	</queryString>
+	<field name="NFACTURA" class="java.lang.Float"/>
+	<field name="CLIENTE" class="java.lang.String"/>
+	<field name="FECHAFACTURA" class="java.sql.Date"/>
+	<field name="IMPORTEBRUTO" class="java.lang.Float"/>
+	<field name="PIVA1" class="java.lang.Float"/>
+	<field name="IIVA1" class="java.lang.Float"/>
+	<field name="TOTALFACTURA" class="java.lang.Float"/>
+	<field name="FORMAPAGO" class="java.lang.String"/>
+	<field name="PEDIDOCLIENTE" class="java.lang.String"/>
+	<field name="ARTICULO" class="java.lang.String"/>
+	<field name="COLOR" class="java.lang.String"/>
+	<field name="DESCRIPCION" class="java.lang.String"/>
+	<field name="PRECIONETO" class="java.lang.Float"/>
+	<field name="UNIDADES" class="java.lang.Float"/>
+	<field name="SubTotal" class="java.lang.Float"/>
+	<field name="CCREFEJOFACM" class="java.lang.String"/>
+	<field name="MODELO" class="java.lang.String"/>
+	<field name="CIF" class="java.lang.String"/>
+	<field name="DIRECCION" class="java.lang.String"/>
+	<field name="POBLACION" class="java.lang.String"/>
+	<field name="PROVINCIA" class="java.lang.String"/>
+	<field name="POSTAL" class="java.lang.String"/>
+	<field name="TELEFONO" class="java.lang.String"/>
+	<field name="FAX" class="java.lang.String"/>
+	<field name="EMAIL" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="78" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="210" height="70" uuid="abfea110-51e3-4e35-9e91-7ad56c0afeaf"/>
+				<imageExpression><![CDATA["necotex.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="430" y="0" width="61" height="50" uuid="21f8f566-41da-4c2f-be83-dacf013cdc73"/>
+				<imageExpression><![CDATA["style.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="368" y="11" width="70" height="30" uuid="fa7e90b2-5d66-49bd-93bc-5793c0235f5d"/>
+				<imageExpression><![CDATA["suyequi.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="480" y="-5" width="74" height="60" uuid="8b7df449-e0ea-4b03-bad1-a5efdafebcd1"/>
+				<imageExpression><![CDATA["letailleur.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="20" y="20" width="535" height="30" uuid="5bc06823-55c6-4520-a6cd-d04eae451958"/>
+				<textElement textAlignment="Center">
+					<font size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Factura]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="110" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="310" height="105" uuid="18f220b5-1545-41d2-8da8-dd9b906b44cf"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="330" y="0" width="224" height="105" uuid="920bab71-9d40-41e2-b8a5-3b50eea84ce1"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="5" y="40" width="64" height="15" uuid="140f7636-6340-49af-8478-9fce0960624a"/>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="25" width="64" height="15" uuid="805b631b-234a-402f-b0e6-8c8fe01a2fcd"/>
+				<text><![CDATA[# Pedido:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="10" width="64" height="15" uuid="8a98cddc-51d9-410d-9c3e-82cd1418ae31">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[# Factura:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="69" y="10" width="236" height="15" uuid="f56b4bea-5c36-4c7d-af4c-bd218bec5f66">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[TEXT($F{NFACTURA},"#,##0")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="69" y="40" width="236" height="15" uuid="6f923931-60ba-41a6-8619-f7d0697e4f74"/>
+				<textFieldExpression><![CDATA[DATEFORMAT($F{FECHAFACTURA},"DD / MM / YYYY")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="69" y="25" width="236" height="15" uuid="ad90bf8d-a08d-4083-9105-67b0b1198faa"/>
+				<textFieldExpression><![CDATA[$F{PEDIDOCLIENTE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="332" y="15" width="220" height="90" uuid="fa2784fa-950d-4921-89d6-58b2c78a7341">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{CLIENTE}+" CIF: "+$F{CIF}+"\n"+$F{DIRECCION}+"\nPoblación: "+$F{POBLACION}+"\n"+$F{PROVINCIA}+" - CP: "+$F{POSTAL}+"\nTel: "+$F{TELEFONO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="330" y="0" width="224" height="15" uuid="99c24c75-4976-459e-b010-8a550f44f257"/>
+				<box>
+					<topPen lineWidth="0.2" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.2" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.2" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.2" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<text><![CDATA[Razón social:]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="510" y="0" width="44" height="20" uuid="f8d16864-045a-46a9-b38f-ba74fe3f90f1"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Subtotal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="150" y="0" width="280" height="20" uuid="231f7b70-b3b8-4f9f-b316-8378e23d8bb3">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Descripción]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="485" y="0" width="25" height="20" uuid="d662b765-2f69-433b-a3bd-df9f0601ce6c">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Uds.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="69" y="0" width="81" height="20" uuid="a864f227-3854-4734-84e8-dc55d94f22ff"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Artículo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="69" height="20" uuid="469e645c-9990-48ca-aa0b-58674f4d0479"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Ref./Mod.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="430" y="0" width="55" height="20" uuid="bcc3aada-3192-4296-9e0f-14c25d80f527">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Precio/Ud.]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="60" splitType="Stretch">
+			<textField>
+				<reportElement x="150" y="0" width="280" height="60" uuid="dc153ee9-9ed1-437f-8efd-58b8532ddbff">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DESCRIPCION}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="485" y="0" width="25" height="60" uuid="9ac5a7a1-f5f7-40b0-8edb-1ea7f725f343"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[TEXT($F{UNIDADES},"#,##0")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="69" y="0" width="81" height="60" uuid="cb9f2e92-6028-4592-8fe3-9da66d863f8b"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ARTICULO}+IF($F{COLOR}.equals(""),"","\n"+$F{COLOR})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="69" height="60" uuid="976cba59-1a88-48d3-ba21-e1aa9c44c635"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CCREFEJOFACM}+"\n"+$F{MODELO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="510" y="0" width="44" height="60" uuid="ece7fbfb-0108-410b-b51a-683e939f5b92"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[CONCATENATE(TEXT($F{SubTotal},"#,##0.00")," €")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="430" y="0" width="55" height="60" uuid="c255a003-329d-43cb-85ef-5476a8987123"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[CONCATENATE(TEXT($F{PRECIONETO},"#,##0.00")," €")]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="8" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="23" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="1" y="0" width="554" height="23" forecolor="#FFFFFF" backcolor="#000000" uuid="5f2b8ddf-30a5-4d73-b7e9-f166f38bfd93"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Necotex Promotora de Negocios Comerciales - C/Tomás Redondo, 3 Edificio Luarca, planta 2 - 28033 Madrid
+Teléfono: 913 817 428 - Fax: 913 820 164 - http://www.necotex.es - email: info@necotex.es]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="120" splitType="Stretch">
+			<rectangle>
+				<reportElement x="380" y="5" width="174" height="60" uuid="d860e3c0-8963-4955-be03-3aca6f662434"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="380" y="5" width="74" height="15" uuid="f8cbb008-57eb-408f-a1ef-6b76b7e9df7c">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Total sin IVA:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="454" y="5" width="100" height="15" uuid="7dd740a4-aaef-4b58-9e92-5565f3ec681d">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[TEXT($F{IMPORTEBRUTO},"#,##0.00")+" €"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="380" y="35" width="74" height="30" uuid="81cad3cc-fb6c-4e58-b7d5-56d58f64e227"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="454" y="35" width="100" height="30" uuid="dc8985d0-caa7-4b02-bf90-1c6d5139e375"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TOTALFACTURA}+" €"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="454" y="20" width="100" height="15" uuid="f67325ff-a32a-4c7e-99a6-767bbdeb6acf">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{IIVA1}+" €"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="5" width="80" height="15" uuid="c10964af-2d09-4f80-9d18-4b0efca20873">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[ Forma de pago:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="20" width="174" height="15" uuid="56635c18-7339-4d7b-8c38-ee4edee64d45">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{FORMAPAGO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="380" y="20" width="74" height="15" uuid="0aff96e3-66a7-416d-a67c-e00a84ba5f15">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[TEXT($F{PIVA1},"#,##0")+"% de IVA: "]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="75" width="554" height="45" uuid="852e66c3-8f3b-4e08-bb9c-8210ba30ae1c">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[De acuerdo con la Ley 15/1999 de Protección de Datos de Carácter Personal le informamos que los presentes datos se hallan en un fichero bajo la responsabilidad de la empresa Necotex Promotora de Negocios Comerciales, S.L. con la finalidad de enviarle, incluso por medios electrónicos, información comercial, así como de los productos y servicios de la misma. Puede ejercer los derechos de acceso, rectificación, cancelación y oposición ante la empresa Necotex Promotora de Negocios Comerciales, S.L. en la dirección: c/Tomás Redondo, 3 - 2ª Planta, Puerta 1 - 28033 Madrid.]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>
