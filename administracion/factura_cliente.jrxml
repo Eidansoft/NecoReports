@@ -304,23 +304,29 @@ WHERE fac.NFactura = $P{Numero_de_factura_ps}]]>
 			</textField>
 		</band>
 	</detail>
-	<columnFooter>
-		<band height="8" splitType="Stretch"/>
-	</columnFooter>
 	<pageFooter>
-		<band height="23" splitType="Stretch">
+		<band height="65" splitType="Stretch">
 			<staticText>
-				<reportElement mode="Opaque" x="1" y="0" width="554" height="23" forecolor="#FFFFFF" backcolor="#000000" uuid="5f2b8ddf-30a5-4d73-b7e9-f166f38bfd93"/>
+				<reportElement mode="Opaque" x="0" y="42" width="554" height="23" forecolor="#FFFFFF" backcolor="#000000" uuid="5f2b8ddf-30a5-4d73-b7e9-f166f38bfd93"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Necotex Promotora de Negocios Comerciales - C/Tomás Redondo, 3 Edificio Luarca, planta 2 - 28033 Madrid
 Teléfono: 913 817 428 - Fax: 913 820 164 - http://www.necotex.es - email: info@necotex.es]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="554" height="45" uuid="852e66c3-8f3b-4e08-bb9c-8210ba30ae1c">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[De acuerdo con la Ley 15/1999 de Protección de Datos de Carácter Personal le informamos que los presentes datos se hallan en un fichero bajo la responsabilidad de la empresa Necotex Promotora de Negocios Comerciales, S.L. con la finalidad de enviarle, incluso por medios electrónicos, información comercial, así como de los productos y servicios de la misma. Puede ejercer los derechos de acceso, rectificación, cancelación y oposición ante la empresa Necotex Promotora de Negocios Comerciales, S.L. en la dirección: c/Tomás Redondo, 3 - 2ª Planta, Puerta 1 - 28033 Madrid.]]></text>
+			</staticText>
 		</band>
 	</pageFooter>
 	<summary>
-		<band height="120" splitType="Stretch">
+		<band height="65" splitType="Stretch">
 			<rectangle>
 				<reportElement x="380" y="5" width="174" height="60" uuid="d860e3c0-8963-4955-be03-3aca6f662434"/>
 			</rectangle>
@@ -409,15 +415,6 @@ Teléfono: 913 817 428 - Fax: 913 820 164 - http://www.necotex.es - email: info@
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[TEXT($F{PIVA1},"#,##0")+"% de IVA: "]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="0" y="75" width="554" height="45" uuid="852e66c3-8f3b-4e08-bb9c-8210ba30ae1c">
-					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
-				</reportElement>
-				<textElement textAlignment="Justified">
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[De acuerdo con la Ley 15/1999 de Protección de Datos de Carácter Personal le informamos que los presentes datos se hallan en un fichero bajo la responsabilidad de la empresa Necotex Promotora de Negocios Comerciales, S.L. con la finalidad de enviarle, incluso por medios electrónicos, información comercial, así como de los productos y servicios de la misma. Puede ejercer los derechos de acceso, rectificación, cancelación y oposición ante la empresa Necotex Promotora de Negocios Comerciales, S.L. en la dirección: c/Tomás Redondo, 3 - 2ª Planta, Puerta 1 - 28033 Madrid.]]></text>
-			</staticText>
 		</band>
 	</summary>
 </jasperReport>
