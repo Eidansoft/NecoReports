@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.1.0.final using JasperReports Library version 6.1.0  -->
-<!-- 2017-01-29T21:09:03 -->
+<!-- 2017-01-29T21:22:01 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Pedido_Ventas" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5f726b7b-bc29-4857-8a2a-373d90af100b">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
 	<parameter name="Numero_pedido_ps" class="java.lang.String"/>
@@ -116,7 +116,7 @@ WHERE ped.NPedido = $P{Numero_pedido_ps}]]>
 				<reportElement x="80" y="82" width="225" height="15" uuid="30f15326-449f-4cee-8f22-645b50bc4a62">
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 				</reportElement>
-				<textFieldExpression><![CDATA[$F{NPEDIDO}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[TEXT($F{NPEDIDO},"#,##0")]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="80" y="157" width="225" height="30" uuid="ea9877f2-c8f2-46fc-be14-5fbd6ebd00a9"/>
