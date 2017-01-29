@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.1.0.final using JasperReports Library version 6.1.0  -->
-<!-- 2017-01-15T00:59:24 -->
+<!-- 2017-01-29T21:33:10 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Pedido_Ventas" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5f726b7b-bc29-4857-8a2a-373d90af100b">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
 	<parameter name="Numero_de_factura_ps" class="java.lang.String"/>
@@ -220,9 +220,9 @@ WHERE fac.NFactura = $P{Numero_de_factura_ps}]]>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="60" splitType="Stretch">
+		<band height="30" splitType="Stretch">
 			<textField>
-				<reportElement x="150" y="0" width="280" height="60" uuid="dc153ee9-9ed1-437f-8efd-58b8532ddbff">
+				<reportElement x="150" y="0" width="280" height="30" uuid="dc153ee9-9ed1-437f-8efd-58b8532ddbff">
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
@@ -233,12 +233,12 @@ WHERE fac.NFactura = $P{Numero_de_factura_ps}]]>
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10"/>
+					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{DESCRIPCION}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="485" y="0" width="25" height="60" uuid="9ac5a7a1-f5f7-40b0-8edb-1ea7f725f343"/>
+				<reportElement x="485" y="0" width="25" height="30" uuid="9ac5a7a1-f5f7-40b0-8edb-1ea7f725f343"/>
 				<box>
 					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
@@ -246,12 +246,12 @@ WHERE fac.NFactura = $P{Numero_de_factura_ps}]]>
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10"/>
+					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[TEXT($F{UNIDADES},"#,##0")]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="69" y="0" width="81" height="60" uuid="cb9f2e92-6028-4592-8fe3-9da66d863f8b"/>
+				<reportElement x="69" y="0" width="81" height="30" uuid="cb9f2e92-6028-4592-8fe3-9da66d863f8b"/>
 				<box>
 					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
@@ -259,12 +259,12 @@ WHERE fac.NFactura = $P{Numero_de_factura_ps}]]>
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10"/>
+					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ARTICULO}+IF($F{COLOR}.equals(""),"","\n"+$F{COLOR})]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="0" width="69" height="60" uuid="976cba59-1a88-48d3-ba21-e1aa9c44c635"/>
+				<reportElement x="0" y="0" width="69" height="30" uuid="976cba59-1a88-48d3-ba21-e1aa9c44c635"/>
 				<box>
 					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
@@ -272,12 +272,12 @@ WHERE fac.NFactura = $P{Numero_de_factura_ps}]]>
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10"/>
+					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{CCREFEJOFACM}+"\n"+$F{MODELO}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="510" y="0" width="44" height="60" uuid="ece7fbfb-0108-410b-b51a-683e939f5b92"/>
+				<reportElement x="510" y="0" width="44" height="30" uuid="ece7fbfb-0108-410b-b51a-683e939f5b92"/>
 				<box>
 					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
@@ -285,12 +285,12 @@ WHERE fac.NFactura = $P{Numero_de_factura_ps}]]>
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10"/>
+					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[CONCATENATE(TEXT($F{SubTotal},"#,##0.00")," €")]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="430" y="0" width="55" height="60" uuid="c255a003-329d-43cb-85ef-5476a8987123"/>
+				<reportElement x="430" y="0" width="55" height="30" uuid="c255a003-329d-43cb-85ef-5476a8987123"/>
 				<box>
 					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
@@ -298,7 +298,7 @@ WHERE fac.NFactura = $P{Numero_de_factura_ps}]]>
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10"/>
+					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[CONCATENATE(TEXT($F{PRECIONETO},"#,##0.00")," €")]]></textFieldExpression>
 			</textField>
