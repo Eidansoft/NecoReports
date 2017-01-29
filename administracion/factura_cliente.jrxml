@@ -109,11 +109,11 @@ WHERE fac.NFactura = $P{Numero_de_factura_ps}]]>
 				<textFieldExpression><![CDATA[$F{PEDIDOCLIENTE}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="332" y="15" width="220" height="90" uuid="fa2784fa-950d-4921-89d6-58b2c78a7341">
+				<reportElement x="340" y="15" width="212" height="90" uuid="fa2784fa-950d-4921-89d6-58b2c78a7341">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 				</reportElement>
-				<textElement textAlignment="Center"/>
+				<textElement textAlignment="Left"/>
 				<textFieldExpression><![CDATA[$F{CLIENTE}+" CIF: "+$F{CIF}+"\n"+$F{DIRECCION}+"\nPoblación: "+$F{POBLACION}+"\n"+$F{PROVINCIA}+" - CP: "+$F{POSTAL}+"\nTel: "+$F{TELEFONO}]]></textFieldExpression>
 			</textField>
 			<staticText>
