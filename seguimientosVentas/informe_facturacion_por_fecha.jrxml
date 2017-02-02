@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.1.0.final using JasperReports Library version 6.1.0  -->
-<!-- 2017-01-29T19:40:30 -->
+<!-- 2017-02-02T22:00:10 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Pedido_Ventas" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5f726b7b-bc29-4857-8a2a-373d90af100b">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
 	<parameter name="fecha_inicio" class="java.sql.Date"/>
@@ -54,11 +54,11 @@ GROUP BY c.Codigo, f.Cliente, c.Poblacion, c.TipoCliente]]>
 			</image>
 			<staticText>
 				<reportElement x="30" y="0" width="525" height="60" uuid="de2f0093-78c8-433e-a638-b309177e4855"/>
-				<textElement textAlignment="Center">
-					<font size="22" isBold="true"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="20" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Informe
-de Ventas]]></text>
+de Facturación]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="10" y="80" width="535" height="15" uuid="2d666006-efdc-4ff4-aa2d-e4eeaa4e8347">
@@ -128,9 +128,9 @@ de Ventas]]></text>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="SansSerif"/>
+					<font fontName="SansSerif" size="10"/>
 				</textElement>
-				<text><![CDATA[Pedidos]]></text>
+				<text><![CDATA[Num.]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="70" y="0" width="130" height="20" uuid="a864f227-3854-4734-84e8-dc55d94f22ff"/>
@@ -322,7 +322,7 @@ Teléfono: 913 817 428 - Fax: 913 820 164 - http://www.necotex.es - email: info@
 				<reportElement x="24" y="30" width="100" height="15" uuid="26060620-2dc4-4b64-987a-c6dc60acbcc0">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
-				<text><![CDATA[Pedidos totales:]]></text>
+				<text><![CDATA[Facturas totales:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="24" y="15" width="100" height="15" uuid="6d52643a-5a33-4798-8bff-052cdbc9532c">
