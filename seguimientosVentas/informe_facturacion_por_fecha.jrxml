@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.1.0.final using JasperReports Library version 6.1.0  -->
-<!-- 2017-02-02T22:00:10 -->
+<!-- 2017-02-02T22:19:36 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Pedido_Ventas" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5f726b7b-bc29-4857-8a2a-373d90af100b">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
 	<parameter name="fecha_inicio" class="java.sql.Date"/>
@@ -10,7 +10,7 @@
 	count(f.NumCliente) numFacturas, sum(f.ImporteBruto) totalSinIva
 FROM GCFacturas f JOIN Clientes c ON f.NumCliente = c.RegCliente
 WHERE f.FechaFactura >= CAST('$P!{fecha_inicio}' AS timestamp)
-AND f.FechaFactura < CAST('$P!{fecha_fin}' AS timestamp)
+AND f.FechaFactura <= CAST('$P!{fecha_fin}' AS timestamp)
 GROUP BY c.Codigo, f.Cliente, c.Poblacion, c.TipoCliente]]>
 	</queryString>
 	<field name="codCliente" class="java.lang.Float"/>
