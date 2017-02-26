@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.1.0.final using JasperReports Library version 6.1.0  -->
-<!-- 2017-02-21T16:37:57 -->
+<!-- 2017-02-26T16:52:02 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Pedido_Ventas" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5f726b7b-bc29-4857-8a2a-373d90af100b">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
 	<parameter name="Numero_de_factura_ps" class="java.lang.String"/>
@@ -70,7 +70,7 @@ WHERE fac.NFactura = $P{Numero_de_factura_ps}]]>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="110" splitType="Stretch">
+		<band height="121" splitType="Stretch">
 			<rectangle>
 				<reportElement x="0" y="0" width="310" height="105" uuid="18f220b5-1545-41d2-8da8-dd9b906b44cf"/>
 			</rectangle>
@@ -126,6 +126,15 @@ WHERE fac.NFactura = $P{Numero_de_factura_ps}]]>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Top"/>
 				<text><![CDATA[Razón social:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="106" width="554" height="15" uuid="c8f33470-77d4-46e8-9453-641acc1700b8">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Inscrita en el Registro Mercantil de Madrid, Tomo 30282, Folio 52, Sección 8, Hoja M-545021 - C.I.F.: B86540135]]></text>
 			</staticText>
 		</band>
 	</pageHeader>
