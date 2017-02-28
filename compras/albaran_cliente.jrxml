@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.1.0.final using JasperReports Library version 6.1.0  -->
-<!-- 2017-02-21T16:38:12 -->
+<!-- 2017-02-28T13:15:00 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Pedido_Ventas" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5f726b7b-bc29-4857-8a2a-373d90af100b">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
 	<parameter name="Numero_de_albaran_ps" class="java.lang.String"/>
@@ -8,7 +8,7 @@
 		<![CDATA[SELECT alb.NAlbaran, alb.PedidoCliente, alb.Cliente, alb.FechaEnvio, alb.Contacto, alb.Unidades UnidadesTotales, alb.Comentarios,  alb.ImporteBruto,
 	cli.CIF, cli.Direccion, cli.Poblacion, cli.Provincia, cli.Postal, cli.Telefono, cli.Fax,
 	lin.Modelo, lin.Articulo, lin.Color, lin.Descripcion, lin.Unidades, lin.Total, 
-	lin.Talla1, lin.Talla2, lin.Talla3, lin.Talla4, lin.Talla5, lin.Talla6, lin.Talla7, lin.Talla8, lin.Talla9, lin.Talla10, lin.Talla11, lin.Talla12, lin.Talla13, lin.Talla14, lin.Talla15, lin.Talla16, lin.Talla17,
+	lin.NPedido, lin.Talla1, lin.Talla2, lin.Talla3, lin.Talla4, lin.Talla5, lin.Talla6, lin.Talla7, lin.Talla8, lin.Talla9, lin.Talla10, lin.Talla11, lin.Talla12, lin.Talla13, lin.Talla14, lin.Talla15, lin.Talla16, lin.Talla17,
 	lin.Entregadas1, lin.Entregadas2, lin.Entregadas3, lin.Entregadas4, lin.Entregadas5, lin.Entregadas6, lin.Entregadas7, lin.Entregadas8, lin.Entregadas9, lin.Entregadas10, lin.Entregadas11, lin.Entregadas12, lin.Entregadas13, lin.Entregadas14, lin.Entregadas15, lin.Entregadas16, lin.Entregadas17,
 	con.DireccionE, con.PoblacionE, con.ProvinciaE, con.PostalE, con.Telefono TelefonoE, con.Movil MovilE, con.PaisE
 FROM GCAlbaranes alb JOIN GCLinAlbarane lin ON alb.RegAlbaran = lin.NumAlbaran
@@ -37,6 +37,7 @@ WHERE alb.NAlbaran = $P{Numero_de_albaran_ps}]]>
 	<field name="DESCRIPCION" class="java.lang.String"/>
 	<field name="UNIDADES" class="java.lang.Float"/>
 	<field name="TOTAL" class="java.lang.Float"/>
+	<field name="NPEDIDO" class="java.lang.Float"/>
 	<field name="TALLA1" class="java.lang.String"/>
 	<field name="TALLA2" class="java.lang.String"/>
 	<field name="TALLA3" class="java.lang.String"/>
@@ -82,9 +83,9 @@ WHERE alb.NAlbaran = $P{Numero_de_albaran_ps}]]>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="215" splitType="Stretch">
+		<band height="212" splitType="Stretch">
 			<rectangle>
-				<reportElement x="0" y="75" width="310" height="105" uuid="733f6d32-dc71-4e4a-a455-0a93d63392a0"/>
+				<reportElement x="0" y="75" width="320" height="105" uuid="733f6d32-dc71-4e4a-a455-0a93d63392a0"/>
 			</rectangle>
 			<image>
 				<reportElement x="0" y="0" width="210" height="70" uuid="abfea110-51e3-4e35-9e91-7ad56c0afeaf"/>
@@ -110,11 +111,11 @@ WHERE alb.NAlbaran = $P{Numero_de_albaran_ps}]]>
 				<text><![CDATA[Albarán]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="69" y="115" width="236" height="15" uuid="576b0e41-bcfa-4ce2-88ef-cd5c887e7b94"/>
+				<reportElement x="90" y="115" width="230" height="15" uuid="576b0e41-bcfa-4ce2-88ef-cd5c887e7b94"/>
 				<textFieldExpression><![CDATA[DATEFORMAT($F{FECHAENVIO},"dd / MM / YYYY")]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="5" y="85" width="64" height="15" uuid="5b0e87ad-527e-420d-820f-d305719684a0">
+				<reportElement x="5" y="85" width="85" height="15" uuid="5b0e87ad-527e-420d-820f-d305719684a0">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
 				<textElement>
@@ -123,20 +124,21 @@ WHERE alb.NAlbaran = $P{Numero_de_albaran_ps}]]>
 				<text><![CDATA[# Albarán]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="185" width="555" height="30" uuid="5d1cbef1-e3c8-45f6-a590-568744f5dcbc"/>
+				<reportElement x="0" y="182" width="555" height="30" uuid="5d1cbef1-e3c8-45f6-a590-568744f5dcbc"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle"/>
 				<text><![CDATA[Observación importante: Realice la revisión de la mercancía recepcionada, no se admiten reclamaciones transcurridos 15 días de su entrega, ni por motivos cuantitativos ni cualitativos.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="5" y="115" width="64" height="15" uuid="8118f997-79fd-4ad6-aad9-52166d6d09e8"/>
+				<reportElement x="5" y="115" width="85" height="15" uuid="8118f997-79fd-4ad6-aad9-52166d6d09e8"/>
 				<text><![CDATA[Fecha:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="69" y="100" width="236" height="15" uuid="748c93e0-fb2d-4c39-adc6-77200f2d5317"/>
+				<reportElement x="90" y="100" width="230" height="15" uuid="748c93e0-fb2d-4c39-adc6-77200f2d5317"/>
 				<textFieldExpression><![CDATA[$F{PEDIDOCLIENTE}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="5" y="100" width="64" height="15" uuid="8642809b-869e-4b91-8778-e70862317e93"/>
-				<text><![CDATA[# Pedido:]]></text>
+				<reportElement x="5" y="100" width="85" height="15" uuid="8642809b-869e-4b91-8778-e70862317e93"/>
+				<text><![CDATA[# Pedido cliente:]]></text>
 			</staticText>
 			<rectangle>
 				<reportElement x="330" y="75" width="224" height="105" uuid="429890a9-228d-40d4-b106-c7e6f1ed7198"/>
@@ -161,26 +163,33 @@ WHERE alb.NAlbaran = $P{Numero_de_albaran_ps}]]>
 				<textFieldExpression><![CDATA[$F{CLIENTE}+"\nCIF: "+$F{CIF}+"\n"+$F{DIRECCION}+"\nPoblación: "+$F{POBLACION}+"\n"+$F{PROVINCIA}+" - CP: "+$F{POSTAL}+"\nTel: "+$F{TELEFONO}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="5" y="130" width="64" height="15" uuid="360ae436-65e5-4e35-abdc-325fba40b20a">
+				<reportElement x="5" y="145" width="85" height="15" uuid="360ae436-65e5-4e35-abdc-325fba40b20a">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
 				<text><![CDATA[Comentario:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="69" y="85" width="236" height="15" uuid="2f8eba02-970f-4a92-827b-ed4c79f91eef">
+				<reportElement x="90" y="85" width="230" height="15" uuid="2f8eba02-970f-4a92-827b-ed4c79f91eef">
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 				</reportElement>
 				<textFieldExpression><![CDATA[TEXT($F{NALBARAN},"#,##0")]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="69" y="130" width="236" height="50" uuid="85a3283a-9b49-43a8-bec4-53d1b03ce530"/>
+				<reportElement x="90" y="145" width="230" height="35" uuid="85a3283a-9b49-43a8-bec4-53d1b03ce530">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
 				<textFieldExpression><![CDATA[$F{COMENTARIOS}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="5" y="130" width="85" height="15" uuid="b724c716-23f5-4d65-82c4-264091c1a92e"/>
+				<text><![CDATA[# Pedido Necotex:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="90" y="130" width="230" height="15" uuid="b3f2b545-ee6b-45a6-a8a3-e72d4dd49b51"/>
+				<textFieldExpression><![CDATA[TEXT($F{NPEDIDO},"#,##0")]]></textFieldExpression>
 			</textField>
 		</band>
 	</title>
-	<pageHeader>
-		<band height="6" splitType="Stretch"/>
-	</pageHeader>
 	<columnHeader>
 		<band height="20" splitType="Stretch">
 			<staticText>
