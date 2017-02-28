@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.1.0.final using JasperReports Library version 6.1.0  -->
-<!-- 2017-01-15T22:19:58 -->
+<!-- 2017-02-28T14:30:03 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Pedido_Ventas" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5f726b7b-bc29-4857-8a2a-373d90af100b">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
 	<parameter name="Numero_pedido_ps" class="java.lang.String"/>
@@ -221,7 +221,7 @@ WHERE ped.NPedido = $P{Numero_pedido_ps}]]>
 				<text><![CDATA[Subtotal]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="110" y="0" width="331" height="20" uuid="231f7b70-b3b8-4f9f-b316-8378e23d8bb3">
+				<reportElement x="110" y="0" width="340" height="20" uuid="231f7b70-b3b8-4f9f-b316-8378e23d8bb3">
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
@@ -238,7 +238,7 @@ WHERE ped.NPedido = $P{Numero_pedido_ps}]]>
 				<text><![CDATA[Descripción - Color F.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="441" y="0" width="44" height="20" uuid="4f81dfd8-1a95-409e-817d-30173ce6afd8"/>
+				<reportElement x="450" y="0" width="35" height="20" uuid="4f81dfd8-1a95-409e-817d-30173ce6afd8"/>
 				<box>
 					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="1.0"/>
@@ -246,7 +246,7 @@ WHERE ped.NPedido = $P{Numero_pedido_ps}]]>
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="SansSerif"/>
+					<font fontName="SansSerif" size="9"/>
 				</textElement>
 				<text><![CDATA[Precio/u]]></text>
 			</staticText>
@@ -296,7 +296,7 @@ WHERE ped.NPedido = $P{Numero_pedido_ps}]]>
 	<detail>
 		<band height="32" splitType="Stretch">
 			<textField>
-				<reportElement x="120" y="0" width="321" height="11" uuid="dc153ee9-9ed1-437f-8efd-58b8532ddbff">
+				<reportElement x="120" y="0" width="330" height="11" uuid="dc153ee9-9ed1-437f-8efd-58b8532ddbff">
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
@@ -312,7 +312,7 @@ WHERE ped.NPedido = $P{Numero_pedido_ps}]]>
 				<textFieldExpression><![CDATA[$F{DESCRIPCION}+IF($F{COLORFABRICANTE}.equals(""),""," - "+$F{COLORFABRICANTE})]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="441" y="0" width="44" height="32" uuid="1d7a8197-1b6f-43fc-90e9-b503a909d27e"/>
+				<reportElement x="450" y="0" width="35" height="32" uuid="1d7a8197-1b6f-43fc-90e9-b503a909d27e"/>
 				<box>
 					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
@@ -381,7 +381,7 @@ WHERE ped.NPedido = $P{Numero_pedido_ps}]]>
 				<textFieldExpression><![CDATA[CONCATENATE(TEXT($F{TOTALNETO},"#,##0.00")," €")]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="150" y="11" width="291" height="21" uuid="04378afe-4643-4f6e-8c86-9e7eaa883aac">
+				<reportElement x="135" y="11" width="315" height="21" uuid="9ca2de83-8677-4254-be9a-e2ea0c5f3417">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
 				<box>
@@ -391,13 +391,14 @@ WHERE ped.NPedido = $P{Numero_pedido_ps}]]>
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font fontName="SansSerif" size="8"/>
+					<font fontName="DejaVu Sans Mono" size="8" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[IF(UPPER(TRIM($F{TALLA1})).equals("UNICA"),"ÚNICA",""+IF($F{PEDIDAS1}!=0,$F{TALLA1}+"\t","")+IF($F{PEDIDAS2}!=0,$F{TALLA2}+"\t","")+IF($F{PEDIDAS3}!=0,$F{TALLA3}+"\t","")+IF($F{PEDIDAS4}!=0,$F{TALLA4}+"\t","")+IF($F{PEDIDAS5}!=0,$F{TALLA5}+"\t","")+IF($F{PEDIDAS6}!=0,$F{TALLA6}+"\t","")+IF($F{PEDIDAS7}!=0,$F{TALLA7}+"\t","")+IF($F{PEDIDAS8}!=0,$F{TALLA8}+"\t","")+IF($F{PEDIDAS9}!=0,$F{TALLA9}+"\t","")+IF($F{PEDIDAS10}!=0,$F{TALLA10}+"\t","")+IF($F{PEDIDAS11}!=0,$F{TALLA11}+"\t","")+IF($F{PEDIDAS12}!=0,$F{TALLA12}+"\t","")+IF($F{PEDIDAS13}!=0,$F{TALLA13}+"\t","")+IF($F{PEDIDAS14}!=0,$F{TALLA14}+"\t","")+IF($F{PEDIDAS15}!=0,$F{TALLA15}+"\t","")+IF($F{PEDIDAS16}!=0,$F{TALLA16}+"\t","")+IF($F{PEDIDAS17}!=0,$F{TALLA17}+"\t","")+"\n"+IF($F{PEDIDAS1}!=0,$F{PEDIDAS1}+"\t","")+IF($F{PEDIDAS2}!=0,$F{PEDIDAS2}+"\t","")+IF($F{PEDIDAS3}!=0,$F{PEDIDAS3}+"\t","")+IF($F{PEDIDAS4}!=0,$F{PEDIDAS4}+"\t","")+IF($F{PEDIDAS5}!=0,$F{PEDIDAS5}+"\t","")+IF($F{PEDIDAS6}!=0,$F{PEDIDAS6}+"\t","")+IF($F{PEDIDAS7}!=0,$F{PEDIDAS7}+"\t","")+IF($F{PEDIDAS8}!=0,$F{PEDIDAS8}+"\t","")+IF($F{PEDIDAS9}!=0,$F{PEDIDAS9}+"\t","")+IF($F{PEDIDAS10}!=0,$F{PEDIDAS10}+"\t","")+IF($F{PEDIDAS11}!=0,$F{PEDIDAS11}+"\t","")+IF($F{PEDIDAS12}!=0,$F{PEDIDAS12}+"\t","")+IF($F{PEDIDAS13}!=0,$F{PEDIDAS13}+"\t","")+IF($F{PEDIDAS14}!=0,$F{PEDIDAS14}+"\t","")+IF($F{PEDIDAS15}!=0,$F{PEDIDAS15}+"\t","")+IF($F{PEDIDAS16}!=0,$F{PEDIDAS16}+"\t","")+IF($F{PEDIDAS17}!=0,$F{PEDIDAS17}+"\t",""))]]></textFieldExpression>
+				<textFieldExpression><![CDATA[IF(UPPER(TRIM($F{TALLA1})).equals("UNICA"),"ÚNICA",""+IF($F{PEDIDAS1}!=0,String.format("-%1$3s", $F{TALLA1}),"")+IF($F{PEDIDAS2}!=0,String.format("-%1$3s", $F{TALLA2}),"")+IF($F{PEDIDAS3}!=0,String.format("-%1$3s", $F{TALLA3}),"")+IF($F{PEDIDAS4}!=0,String.format("-%1$3s", $F{TALLA4}),"")+IF($F{PEDIDAS5}!=0,String.format("-%1$3s", $F{TALLA5}),"")+IF($F{PEDIDAS6}!=0,String.format("-%1$3s", $F{TALLA6}),"")+IF($F{PEDIDAS7}!=0,String.format("-%1$3s", $F{TALLA7}),"")+IF($F{PEDIDAS8}!=0,String.format("-%1$3s", $F{TALLA8}),"")+IF($F{PEDIDAS9}!=0,String.format("-%1$3s", $F{TALLA9}),"")+IF($F{PEDIDAS10}!=0,String.format("-%1$3s", $F{TALLA10}),"")+IF($F{PEDIDAS11}!=0,String.format("-%1$3s", $F{TALLA11}),"")+IF($F{PEDIDAS12}!=0,String.format("-%1$3s", $F{TALLA12}),"")+IF($F{PEDIDAS13}!=0,String.format("-%1$3s", $F{TALLA13}),"")+IF($F{PEDIDAS14}!=0,String.format("-%1$3s", $F{TALLA14}),"")+IF($F{PEDIDAS15}!=0,String.format("-%1$3s", $F{TALLA15}),"")+IF($F{PEDIDAS16}!=0,String.format("-%1$3s", $F{TALLA16}),"")+IF($F{PEDIDAS17}!=0,String.format("-%1$3s", $F{TALLA17}),"")+"\n"+IF($F{PEDIDAS1}!=0,String.format("-%1$3s", $F{PEDIDAS1}),"")+IF($F{PEDIDAS2}!=0,String.format("-%1$3s", $F{PEDIDAS2}),"")+IF($F{PEDIDAS3}!=0,String.format("-%1$3s", $F{PEDIDAS3}),"")+IF($F{PEDIDAS4}!=0,String.format("-%1$3s", $F{PEDIDAS4}),"")+IF($F{PEDIDAS5}!=0,String.format("-%1$3s", $F{PEDIDAS5}),"")+IF($F{PEDIDAS6}!=0,String.format("-%1$3s", $F{PEDIDAS6}),"")+IF($F{PEDIDAS7}!=0,String.format("-%1$3s", $F{PEDIDAS7}),"")+IF($F{PEDIDAS8}!=0,String.format("-%1$3s", $F{PEDIDAS8}),"")+IF($F{PEDIDAS9}!=0,String.format("-%1$3s", $F{PEDIDAS9}),"")+IF($F{PEDIDAS10}!=0,String.format("-%1$3s", $F{PEDIDAS10}),"")+IF($F{PEDIDAS11}!=0,String.format("-%1$3s", $F{PEDIDAS11}),"")+IF($F{PEDIDAS12}!=0,String.format("-%1$3s", $F{PEDIDAS12}),"")+IF($F{PEDIDAS13}!=0,String.format("-%1$3s", $F{PEDIDAS13}),"")+IF($F{PEDIDAS14}!=0,String.format("-%1$3s", $F{PEDIDAS14}),"")+IF($F{PEDIDAS15}!=0,String.format("-%1$3s", $F{PEDIDAS15}),"")+IF($F{PEDIDAS16}!=0,String.format("-%1$3s", $F{PEDIDAS16}),"")+IF($F{PEDIDAS17}!=0,String.format("-%1$3s", $F{PEDIDAS17}),""))]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="110" y="11" width="40" height="21" uuid="0d9f4f0c-e7d3-4aa0-bf24-7e830102d57d">
+				<reportElement x="110" y="11" width="25" height="21" uuid="6b54536f-c4e8-4dac-8df6-a439268f97ed">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 				</reportElement>
 				<box>
 					<bottomPen lineWidth="1.0"/>
@@ -405,7 +406,7 @@ WHERE ped.NPedido = $P{Numero_pedido_ps}]]>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="SansSerif" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[IF(UPPER(TRIM($F{TALLA1})).equals("UNICA")," Talla: "," Talla: \n Unids.: ")]]></textFieldExpression>
+				<textFieldExpression><![CDATA[IF(UPPER(TRIM($F{TALLA1})).equals("UNICA")," Talla: "," Talla \n Unids. ")]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
