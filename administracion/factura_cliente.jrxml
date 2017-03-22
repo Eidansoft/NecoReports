@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.1.0.final using JasperReports Library version 6.1.0  -->
-<!-- 2017-02-28T15:11:38 -->
+<!-- 2017-03-22T23:09:36 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Pedido_Ventas" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5f726b7b-bc29-4857-8a2a-373d90af100b">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
 	<parameter name="Numero_de_factura_ps" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[SELECT fac.NFactura, fac.Cliente, fac.FechaFactura, fac.ImporteBruto, fac.PIva1, fac.IIva1, fac.TotalFactura, fac.FormaPago, fac.PedidoCliente,
+		<![CDATA[SELECT fac.NFactura, fac.Cliente, fac.FechaFactura, fac.ImporteBruto, fac.PIva1, fac.IIva1, fac.TotalFactura, fac.FormaPago, alb.PedidoCliente,
 	lin.Articulo, lin.Color, lin.Descripcion, lin.PrecioNeto, lin.Unidades, lin.Total SubTotal, lin.SuAlbaran NAlbaran,
 	art.CCRefeJOFACM, art.Modelo,
 	cli.CIF, cli.Direccion, cli.Poblacion, cli.Provincia, cli.Postal, cli.Telefono, cli.Fax, cli.email
 FROM GCFacturas fac JOIN GCLinFacturas lin ON fac.RegFactura = lin.NumFactura
 	JOIN Clientes cli ON cli.RegCliente = fac.NumCliente
 	JOIN Articulos art ON lin.Codigo = art.Codigo
+	JOIN GCAlbaranes alb ON alb.NAlbaran = lin.SuAlbaran
 WHERE fac.NFactura = $P{Numero_de_factura_ps}]]>
 	</queryString>
 	<field name="NFACTURA" class="java.lang.Float"/>
@@ -84,7 +85,7 @@ WHERE fac.NFactura = $P{Numero_de_factura_ps}]]>
 			</staticText>
 			<staticText>
 				<reportElement x="5" y="25" width="95" height="15" uuid="805b631b-234a-402f-b0e6-8c8fe01a2fcd"/>
-				<text><![CDATA[# Pedido:]]></text>
+				<text><![CDATA[# Pedido cliente:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="5" y="10" width="95" height="15" uuid="8a98cddc-51d9-410d-9c3e-82cd1418ae31">
