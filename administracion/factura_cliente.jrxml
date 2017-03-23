@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.1.0.final using JasperReports Library version 6.1.0  -->
-<!-- 2017-03-22T23:09:36 -->
+<!-- 2017-03-23T01:23:16 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Pedido_Ventas" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5f726b7b-bc29-4857-8a2a-373d90af100b">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
 	<parameter name="Numero_de_factura_ps" class="java.lang.String"/>
@@ -41,6 +41,10 @@ WHERE fac.NFactura = $P{Numero_de_factura_ps}]]>
 	<field name="TELEFONO" class="java.lang.String"/>
 	<field name="FAX" class="java.lang.String"/>
 	<field name="EMAIL" class="java.lang.String"/>
+	<variable name="albaranesList" class="java.lang.String">
+		<variableExpression><![CDATA[$V{albaranesList}.equalsIgnoreCase("") ? $V{albaranesList}.contains(TEXT($F{NAlbaran},"#,##0")) ? $V{albaranesList}:$V{albaranesList}+TEXT($F{NAlbaran},"#,##0") : $V{albaranesList}.contains(TEXT($F{NAlbaran},"#,##0")) ? $V{albaranesList}:$V{albaranesList}+" - "+TEXT($F{NAlbaran},"#,##0")]]></variableExpression>
+		<initialValueExpression><![CDATA[""]]></initialValueExpression>
+	</variable>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -80,15 +84,15 @@ WHERE fac.NFactura = $P{Numero_de_factura_ps}]]>
 				<reportElement x="330" y="0" width="224" height="105" uuid="920bab71-9d40-41e2-b8a5-3b50eea84ce1"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="5" y="40" width="95" height="15" uuid="140f7636-6340-49af-8478-9fce0960624a"/>
+				<reportElement x="5" y="40" width="105" height="15" uuid="140f7636-6340-49af-8478-9fce0960624a"/>
 				<text><![CDATA[Fecha:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="5" y="25" width="95" height="15" uuid="805b631b-234a-402f-b0e6-8c8fe01a2fcd"/>
+				<reportElement x="5" y="25" width="105" height="15" uuid="805b631b-234a-402f-b0e6-8c8fe01a2fcd"/>
 				<text><![CDATA[# Pedido cliente:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="5" y="10" width="95" height="15" uuid="8a98cddc-51d9-410d-9c3e-82cd1418ae31">
+				<reportElement x="5" y="10" width="105" height="15" uuid="8a98cddc-51d9-410d-9c3e-82cd1418ae31">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
 				<textElement>
@@ -97,17 +101,17 @@ WHERE fac.NFactura = $P{Numero_de_factura_ps}]]>
 				<text><![CDATA[# Factura:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="100" y="10" width="216" height="15" uuid="f56b4bea-5c36-4c7d-af4c-bd218bec5f66">
+				<reportElement x="110" y="10" width="206" height="15" uuid="f56b4bea-5c36-4c7d-af4c-bd218bec5f66">
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 				</reportElement>
 				<textFieldExpression><![CDATA[TEXT($F{NFACTURA},"#,##0")]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="100" y="40" width="216" height="15" uuid="6f923931-60ba-41a6-8619-f7d0697e4f74"/>
+				<reportElement x="110" y="40" width="206" height="15" uuid="6f923931-60ba-41a6-8619-f7d0697e4f74"/>
 				<textFieldExpression><![CDATA[DATEFORMAT($F{FECHAFACTURA},"dd / MM / YYYY")]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="100" y="25" width="216" height="15" uuid="ad90bf8d-a08d-4083-9105-67b0b1198faa"/>
+				<reportElement x="110" y="25" width="206" height="15" uuid="ad90bf8d-a08d-4083-9105-67b0b1198faa"/>
 				<textFieldExpression><![CDATA[$F{PEDIDOCLIENTE}]]></textFieldExpression>
 			</textField>
 			<textField>
@@ -139,19 +143,17 @@ WHERE fac.NFactura = $P{Numero_de_factura_ps}]]>
 				<text><![CDATA[Inscrita en el Registro Mercantil de Madrid, Tomo 30282, Folio 52, Sección 8, Hoja M-545021 - C.I.F.: B86540135]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="5" y="55" width="95" height="15" uuid="fc1406f7-39df-4601-86a4-817c839740a1">
+				<reportElement x="5" y="55" width="105" height="15" uuid="fc1406f7-39df-4601-86a4-817c839740a1">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
 				<textElement>
 					<font size="10"/>
 				</textElement>
-				<text><![CDATA[# Albarán Necotex:]]></text>
+				<text><![CDATA[# Albarán/es Necotex:]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="100" y="55" width="216" height="15" uuid="4c0e3289-1fd0-4217-86f5-c3a48bc16114">
-					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
-				</reportElement>
-				<textFieldExpression><![CDATA[TEXT($F{NAlbaran},"#,##0")]]></textFieldExpression>
+			<textField evaluationTime="Report">
+				<reportElement x="110" y="55" width="206" height="45" uuid="bb6f2186-1f1c-4354-a265-98fe2ef2b4e2"/>
+				<textFieldExpression><![CDATA[$V{albaranesList}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageHeader>
