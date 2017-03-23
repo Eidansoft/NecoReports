@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.1.0.final using JasperReports Library version 6.1.0  -->
-<!-- 2017-02-28T13:15:00 -->
+<!-- 2017-03-23T01:40:35 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Pedido_Ventas" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5f726b7b-bc29-4857-8a2a-373d90af100b">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
 	<parameter name="Numero_de_albaran_ps" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[SELECT alb.NAlbaran, alb.PedidoCliente, alb.Cliente, alb.FechaEnvio, alb.Contacto, alb.Unidades UnidadesTotales, alb.Comentarios,  alb.ImporteBruto,
+		<![CDATA[SELECT alb.NAlbaran, alb.PedidoCliente, alb.Cliente, alb.FechaEnvio, alb.Contacto, alb.Unidades UnidadesTotales, ped.Comentarios, alb.ImporteBruto,
 	cli.CIF, cli.Direccion, cli.Poblacion, cli.Provincia, cli.Postal, cli.Telefono, cli.Fax,
 	lin.Modelo, lin.Articulo, lin.Color, lin.Descripcion, lin.Unidades, lin.Total, 
 	lin.NPedido, lin.Talla1, lin.Talla2, lin.Talla3, lin.Talla4, lin.Talla5, lin.Talla6, lin.Talla7, lin.Talla8, lin.Talla9, lin.Talla10, lin.Talla11, lin.Talla12, lin.Talla13, lin.Talla14, lin.Talla15, lin.Talla16, lin.Talla17,
@@ -14,6 +14,7 @@
 FROM GCAlbaranes alb JOIN GCLinAlbarane lin ON alb.RegAlbaran = lin.NumAlbaran
 	JOIN Clientes cli ON alb.NumCliente = cli.RegCliente
 	JOIN GCContactos con ON (alb.NumCliente = con.NumCliente AND alb.Contacto = con.Contacto)
+	JOIN GCPedidos ped ON ped.NPedido = lin.NPedido
 WHERE alb.NAlbaran = $P{Numero_de_albaran_ps}]]>
 	</queryString>
 	<field name="NALBARAN" class="java.lang.Float"/>
@@ -433,7 +434,7 @@ Teléfono: 913 817 428 - Fax: 913 820 164 - http://www.necotex.es - email: info@
 				<textElement textAlignment="Right">
 					<font size="9"/>
 				</textElement>
-				<text><![CDATA[Firma:]]></text>
+				<text><![CDATA[Firma.]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="444" y="27" width="110" height="15" uuid="93c5e43e-8306-4144-b2b0-04e476eb57b8">
@@ -463,7 +464,7 @@ Teléfono: 913 817 428 - Fax: 913 820 164 - http://www.necotex.es - email: info@
 				<textElement textAlignment="Right">
 					<font size="9"/>
 				</textElement>
-				<text><![CDATA[Firma:]]></text>
+				<text><![CDATA[Firma.]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="447" y="42" width="82" height="15" uuid="2ab4f134-137e-434e-87d2-678385719cc2">
