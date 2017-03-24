@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.1.0.final using JasperReports Library version 6.1.0  -->
-<!-- 2017-03-23T01:23:16 -->
+<!-- 2017-03-24T20:50:26 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Pedido_Ventas" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5f726b7b-bc29-4857-8a2a-373d90af100b">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
 	<parameter name="Numero_de_factura_ps" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[SELECT fac.NFactura, fac.Cliente, fac.FechaFactura, fac.ImporteBruto, fac.PIva1, fac.IIva1, fac.TotalFactura, fac.FormaPago, alb.PedidoCliente,
+		<![CDATA[SELECT DISTINCT fac.NFactura, fac.Cliente, fac.FechaFactura, fac.ImporteBruto, fac.PIva1, fac.IIva1, fac.TotalFactura, fac.FormaPago, alb.PedidoCliente,
 	lin.Articulo, lin.Color, lin.Descripcion, lin.PrecioNeto, lin.Unidades, lin.Total SubTotal, lin.SuAlbaran NAlbaran,
 	art.CCRefeJOFACM, art.Modelo,
-	cli.CIF, cli.Direccion, cli.Poblacion, cli.Provincia, cli.Postal, cli.Telefono, cli.Fax, cli.email
+	cli.CIF, cli.Direccion, cli.Poblacion, cli.Provincia, cli.Postal, cli.Telefono, cli.Fax, cli.email,
+	ped.Comentarios
 FROM GCFacturas fac JOIN GCLinFacturas lin ON fac.RegFactura = lin.NumFactura
 	JOIN Clientes cli ON cli.RegCliente = fac.NumCliente
 	JOIN Articulos art ON lin.Codigo = art.Codigo
 	JOIN GCAlbaranes alb ON alb.NAlbaran = lin.SuAlbaran
+	JOIN GCLinAlbarane linalb ON alb.RegAlbaran = linalb.NumAlbaran
+	JOIN GCPedidos ped ON ped.NPedido = linalb.NPedido
 WHERE fac.NFactura = $P{Numero_de_factura_ps}]]>
 	</queryString>
 	<field name="NFACTURA" class="java.lang.Float"/>
@@ -41,6 +44,7 @@ WHERE fac.NFactura = $P{Numero_de_factura_ps}]]>
 	<field name="TELEFONO" class="java.lang.String"/>
 	<field name="FAX" class="java.lang.String"/>
 	<field name="EMAIL" class="java.lang.String"/>
+	<field name="COMENTARIOS" class="java.lang.String"/>
 	<variable name="albaranesList" class="java.lang.String">
 		<variableExpression><![CDATA[$V{albaranesList}.equalsIgnoreCase("") ? $V{albaranesList}.contains(TEXT($F{NAlbaran},"#,##0")) ? $V{albaranesList}:$V{albaranesList}+TEXT($F{NAlbaran},"#,##0") : $V{albaranesList}.contains(TEXT($F{NAlbaran},"#,##0")) ? $V{albaranesList}:$V{albaranesList}+" - "+TEXT($F{NAlbaran},"#,##0")]]></variableExpression>
 		<initialValueExpression><![CDATA[""]]></initialValueExpression>
@@ -152,8 +156,23 @@ WHERE fac.NFactura = $P{Numero_de_factura_ps}]]>
 				<text><![CDATA[# Albarán/es Necotex:]]></text>
 			</staticText>
 			<textField evaluationTime="Report">
-				<reportElement x="110" y="55" width="206" height="45" uuid="bb6f2186-1f1c-4354-a265-98fe2ef2b4e2"/>
+				<reportElement x="110" y="55" width="206" height="15" uuid="bb6f2186-1f1c-4354-a265-98fe2ef2b4e2">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
 				<textFieldExpression><![CDATA[$V{albaranesList}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="5" y="70" width="105" height="15" uuid="354124e1-24dc-4f0d-bd67-cf10153d0a55">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<text><![CDATA[Comentarios:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="110" y="70" width="206" height="30" uuid="7db93c5a-865a-4e7b-990e-4ee994b75c2c">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{COMENTARIOS}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageHeader>
