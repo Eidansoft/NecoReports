@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.1.0.final using JasperReports Library version 6.1.0  -->
-<!-- 2017-03-30T14:15:45 -->
+<!-- 2017-05-03T20:54:59 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Pedido_Ventas" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5f726b7b-bc29-4857-8a2a-373d90af100b">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
 	<parameter name="Numero_de_factura_ps" class="java.lang.String"/>
@@ -379,13 +379,53 @@ Teléfono: 913 817 428 - Fax: 913 820 164 - http://www.necotex.es - email: info@
 			</textField>
 		</band>
 	</pageFooter>
-	<summary>
-		<band height="65" splitType="Stretch">
+	<lastPageFooter>
+		<band height="155">
 			<rectangle>
-				<reportElement x="380" y="5" width="174" height="60" uuid="d860e3c0-8963-4955-be03-3aca6f662434"/>
+				<reportElement x="380" y="7" width="174" height="60" uuid="d860e3c0-8963-4955-be03-3aca6f662434"/>
 			</rectangle>
+			<textField>
+				<reportElement x="454" y="37" width="100" height="30" uuid="dc8985d0-caa7-4b02-bf90-1c6d5139e375"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[TEXT($F{TOTALFACTURA},"#,##0.00")+" €"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="454" y="22" width="100" height="15" uuid="f67325ff-a32a-4c7e-99a6-767bbdeb6acf">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[TEXT($F{IIVA1},"#,##0.00")+" €"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="380" y="22" width="74" height="15" uuid="0aff96e3-66a7-416d-a67c-e00a84ba5f15">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[TEXT($F{PIVA1},"#,##0")+"% de IVA: "]]></textFieldExpression>
+			</textField>
 			<staticText>
-				<reportElement x="380" y="5" width="74" height="15" uuid="f8cbb008-57eb-408f-a1ef-6b76b7e9df7c">
+				<reportElement x="380" y="37" width="74" height="30" uuid="81cad3cc-fb6c-4e58-b7d5-56d58f64e227"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="7" width="74" height="15" uuid="f8cbb008-57eb-408f-a1ef-6b76b7e9df7c">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
 				<box>
@@ -399,8 +439,15 @@ Teléfono: 913 817 428 - Fax: 913 820 164 - http://www.necotex.es - email: info@
 				</textElement>
 				<text><![CDATA[Total sin IVA:]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="0" y="7" width="80" height="15" uuid="c10964af-2d09-4f80-9d18-4b0efca20873">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[ Forma de pago:]]></text>
+			</staticText>
 			<textField>
-				<reportElement x="454" y="5" width="100" height="15" uuid="7dd740a4-aaef-4b58-9e92-5565f3ec681d">
+				<reportElement x="454" y="7" width="100" height="15" uuid="7dd740a4-aaef-4b58-9e92-5565f3ec681d">
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
@@ -415,60 +462,42 @@ Teléfono: 913 817 428 - Fax: 913 820 164 - http://www.necotex.es - email: info@
 				</textElement>
 				<textFieldExpression><![CDATA[TEXT($F{IMPORTEBRUTO},"#,##0.00")+" €"]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="380" y="35" width="74" height="30" uuid="81cad3cc-fb6c-4e58-b7d5-56d58f64e227"/>
-				<box>
-					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="14" isBold="true"/>
-				</textElement>
-				<text><![CDATA[TOTAL:]]></text>
-			</staticText>
 			<textField>
-				<reportElement x="454" y="35" width="100" height="30" uuid="dc8985d0-caa7-4b02-bf90-1c6d5139e375"/>
-				<box>
-					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="14" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[TEXT($F{TOTALFACTURA},"#,##0.00")+" €"]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="454" y="20" width="100" height="15" uuid="f67325ff-a32a-4c7e-99a6-767bbdeb6acf">
-					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
-				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[TEXT($F{IIVA1},"#,##0.00")+" €"]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="0" y="5" width="80" height="15" uuid="c10964af-2d09-4f80-9d18-4b0efca20873">
-					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
-				</reportElement>
-				<textElement textAlignment="Left" verticalAlignment="Middle"/>
-				<text><![CDATA[ Forma de pago:]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="0" y="20" width="174" height="15" uuid="56635c18-7339-4d7b-8c38-ee4edee64d45">
+				<reportElement x="0" y="22" width="174" height="15" uuid="56635c18-7339-4d7b-8c38-ee4edee64d45">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{FORMAPAGO}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="380" y="20" width="74" height="15" uuid="0aff96e3-66a7-416d-a67c-e00a84ba5f15">
+			<textField evaluationTime="Report">
+				<reportElement x="280" y="74" width="100" height="15" uuid="ecec9147-4cf9-4727-8be4-fa384ea2a704">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[TEXT($F{PIVA1},"#,##0")+"% de IVA: "]]></textFieldExpression>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[" de " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
+			<textField>
+				<reportElement x="180" y="74" width="100" height="15" uuid="443d5e9e-afa7-48a0-bd50-a77619071c2a"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="132" width="554" height="23" forecolor="#FFFFFF" backcolor="#000000" uuid="b47f01dd-8bb3-4cde-8ac0-ecb54fc1da04"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Necotex Promotora de Negocios Comerciales - C/Tomás Redondo, 3 Edificio Luarca, planta 2 - 28033 Madrid
+Teléfono: 913 817 428 - Fax: 913 820 164 - http://www.necotex.es - email: info@necotex.es]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="90" width="554" height="45" uuid="c4377be3-6ad7-4ea7-96e1-90af4e1cd4d6">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[De acuerdo con la Ley 15/1999 de Protección de Datos de Carácter Personal le informamos que los presentes datos se hallan en un fichero bajo la responsabilidad de la empresa Necotex Promotora de Negocios Comerciales, S.L. con la finalidad de enviarle, incluso por medios electrónicos, información comercial, así como de los productos y servicios de la misma. Puede ejercer los derechos de acceso, rectificación, cancelación y oposición ante la empresa Necotex Promotora de Negocios Comerciales, S.L. en la dirección: c/Tomás Redondo, 3 - 2ª Planta, Puerta 1 - 28033 Madrid.]]></text>
+			</staticText>
 		</band>
-	</summary>
+	</lastPageFooter>
 </jasperReport>
