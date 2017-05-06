@@ -16,7 +16,7 @@
 FROM
 	GCLinPedidos lin JOIN GCPedidos ped ON lin.NumPedido = ped.RegPedido
 	JOIN Clientes cli ON cli.RegCliente = ped.NumCliente
-	JOIN GCContactos con ON con.Contacto = ped.Contacto
+	JOIN GCContactos con ON con.Contacto = ped.Contacto AND cli.RegCliente = con.NumCliente
 	JOIN Articulos art ON art.RegArticulo = lin.NumArticulo
 WHERE ped.NPedido = $P{Numero_pedido_ps}]]>
 	</queryString>
