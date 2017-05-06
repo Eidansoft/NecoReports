@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.1.0.final using JasperReports Library version 6.1.0  -->
-<!-- 2017-02-28T14:19:18 -->
+<!-- 2017-05-06T13:12:57 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Pedido_Ventas" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5f726b7b-bc29-4857-8a2a-373d90af100b">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
 	<parameter name="Numero_pedido_ps" class="java.lang.String"/>
@@ -12,7 +12,7 @@
 	lin.Pedidas1, lin.Pedidas2, lin.Pedidas3, lin.Pedidas4, lin.Pedidas5, lin.Pedidas6, lin.Pedidas7, lin.Pedidas8, lin.Pedidas9, lin.Pedidas10, lin.Pedidas11, lin.Pedidas12, lin.Pedidas13, lin.Pedidas14, lin.Pedidas15, lin.Pedidas16, lin.Pedidas17,
 	cli.CIF, cli.Direccion, cli.Poblacion, cli.Provincia, cli.Postal, cli.Telefono, cli.email,
 	con.DireccionE, con.PoblacionE, con.ProvinciaE, con.PostalE, con.Telefono TelefonoE, con.PaisE,
-	art.ColorFabricante
+	art.ColorFabricante, art.Codigo codigoArticuloPS
 FROM
 	GCLinPedidos lin JOIN GCPedidos ped ON lin.NumPedido = ped.RegPedido
 	JOIN Clientes cli ON cli.RegCliente = ped.NumCliente
