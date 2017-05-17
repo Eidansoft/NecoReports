@@ -1,8 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.1.0.final using JasperReports Library version 6.1.0  -->
-<!-- 2017-05-03T20:54:59 -->
+<!-- 2017-05-17T23:32:37 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Pedido_Ventas" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5f726b7b-bc29-4857-8a2a-373d90af100b">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
+	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="notasDataset" uuid="6d954129-1a92-43db-a7ae-0580ea875492">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
+		<parameter name="Numero_de_factura_ps" class="java.lang.String"/>
+		<queryString>
+			<![CDATA[SELECT DISTINCT ped.Comentarios
+FROM GCFacturas fac JOIN GCLinFacturas lin ON fac.RegFactura = lin.NumFactura
+	JOIN GCAlbaranes alb ON alb.NAlbaran = lin.SuAlbaran
+	JOIN GCLinAlbarane linalb ON alb.RegAlbaran = linalb.NumAlbaran
+	JOIN GCPedidos ped ON ped.NPedido = linalb.NPedido
+WHERE ped.Comentarios IS NOT NULL
+AND ped.Comentarios NOT IN ('')
+AND fac.NFactura = $P{Numero_de_factura_ps}]]>
+		</queryString>
+		<field name="COMENTARIOS" class="java.lang.String"/>
+		<variable name="notasList" class="java.lang.String">
+			<variableExpression><![CDATA[$V{notasList}.equalsIgnoreCase("") ? $V{notasList}.contains($F{COMENTARIOS}) ? $V{notasList}:$V{notasList}+$F{COMENTARIOS} : $V{notasList}.contains($F{COMENTARIOS}) ? $V{notasList}:$V{notasList}+" - "+$F{COMENTARIOS}]]></variableExpression>
+			<initialValueExpression><![CDATA[""]]></initialValueExpression>
+		</variable>
+	</subDataset>
 	<parameter name="Numero_de_factura_ps" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT DISTINCT fac.NFactura, fac.Cliente, fac.FechaFactura, fac.ImporteBruto, fac.PIva1, fac.IIva1, fac.TotalFactura, fac.FormaPago, alb.PedidoCliente,
@@ -16,7 +62,7 @@ FROM GCFacturas fac JOIN GCLinFacturas lin ON fac.RegFactura = lin.NumFactura
 	JOIN GCLinAlbarane linalb ON alb.RegAlbaran = linalb.NumAlbaran
 WHERE fac.NFactura = $P{Numero_de_factura_ps}]]>
 	</queryString>
-	<field name="NFACTURA" class="java.lang.Float"/>
+	<field name="NFACTURA" class="java.lang.Long"/>
 	<field name="CLIENTE" class="java.lang.String"/>
 	<field name="FECHAFACTURA" class="java.sql.Date"/>
 	<field name="IMPORTEBRUTO" class="java.lang.Float"/>
@@ -51,15 +97,15 @@ WHERE fac.NFactura = $P{Numero_de_factura_ps}]]>
 		<band splitType="Stretch"/>
 	</background>
 	<pageHeader>
-		<band height="219" splitType="Stretch">
+		<band height="237" splitType="Stretch">
 			<rectangle>
-				<reportElement x="0" y="71" width="330" height="133" uuid="18f220b5-1545-41d2-8da8-dd9b906b44cf"/>
+				<reportElement x="0" y="71" width="330" height="150" uuid="18f220b5-1545-41d2-8da8-dd9b906b44cf"/>
 			</rectangle>
 			<rectangle>
-				<reportElement x="340" y="71" width="214" height="133" uuid="920bab71-9d40-41e2-b8a5-3b50eea84ce1"/>
+				<reportElement x="340" y="71" width="214" height="150" uuid="920bab71-9d40-41e2-b8a5-3b50eea84ce1"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="5" y="126" width="105" height="15" uuid="140f7636-6340-49af-8478-9fce0960624a"/>
+				<reportElement x="5" y="141" width="105" height="15" uuid="140f7636-6340-49af-8478-9fce0960624a"/>
 				<text><![CDATA[Fecha:]]></text>
 			</staticText>
 			<staticText>
@@ -82,17 +128,17 @@ WHERE fac.NFactura = $P{Numero_de_factura_ps}]]>
 				<textFieldExpression><![CDATA[TEXT($F{NFACTURA},"#,##0")]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="110" y="126" width="220" height="15" uuid="6f923931-60ba-41a6-8619-f7d0697e4f74"/>
+				<reportElement x="110" y="141" width="220" height="15" uuid="6f923931-60ba-41a6-8619-f7d0697e4f74"/>
 				<textFieldExpression><![CDATA[DATEFORMAT($F{FECHAFACTURA},"dd / MM / YYYY")]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Report">
-				<reportElement x="110" y="96" width="220" height="30" uuid="ad90bf8d-a08d-4083-9105-67b0b1198faa">
+				<reportElement x="110" y="96" width="220" height="45" uuid="ad90bf8d-a08d-4083-9105-67b0b1198faa">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
 				<textFieldExpression><![CDATA[$V{pedidosList}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="350" y="86" width="202" height="115" uuid="fa2784fa-950d-4921-89d6-58b2c78a7341">
+				<reportElement x="350" y="86" width="202" height="130" uuid="fa2784fa-950d-4921-89d6-58b2c78a7341">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 				</reportElement>
@@ -111,7 +157,7 @@ WHERE fac.NFactura = $P{Numero_de_factura_ps}]]>
 				<text><![CDATA[Razón social:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="204" width="554" height="15" uuid="c8f33470-77d4-46e8-9453-641acc1700b8">
+				<reportElement x="0" y="221" width="554" height="15" uuid="c8f33470-77d4-46e8-9453-641acc1700b8">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -120,7 +166,7 @@ WHERE fac.NFactura = $P{Numero_de_factura_ps}]]>
 				<text><![CDATA[Inscrita en el Registro Mercantil de Madrid, Tomo 30282, Folio 52, Sección 8, Hoja M-545021 - C.I.F.: B86540135]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="5" y="141" width="105" height="15" uuid="fc1406f7-39df-4601-86a4-817c839740a1">
+				<reportElement x="5" y="156" width="105" height="15" uuid="fc1406f7-39df-4601-86a4-817c839740a1">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
 				<textElement>
@@ -129,7 +175,7 @@ WHERE fac.NFactura = $P{Numero_de_factura_ps}]]>
 				<text><![CDATA[# Albarán/es Necotex:]]></text>
 			</staticText>
 			<textField evaluationTime="Report">
-				<reportElement x="110" y="141" width="220" height="30" uuid="bb6f2186-1f1c-4354-a265-98fe2ef2b4e2">
+				<reportElement x="110" y="156" width="220" height="45" uuid="bb6f2186-1f1c-4354-a265-98fe2ef2b4e2">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
 				<textFieldExpression><![CDATA[$V{albaranesList}]]></textFieldExpression>
@@ -158,13 +204,13 @@ WHERE fac.NFactura = $P{Numero_de_factura_ps}]]>
 				<imageExpression><![CDATA["suyequi.jpg"]]></imageExpression>
 			</image>
 			<textField>
-				<reportElement x="5" y="171" width="105" height="15" uuid="6296ab75-d694-4b3e-bf7b-b73ec50f94aa">
+				<reportElement x="5" y="201" width="105" height="15" uuid="6296ab75-d694-4b3e-bf7b-b73ec50f94aa">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
 				<textFieldExpression><![CDATA[IF($F{CIF}.equals("A81196743"),"Referencia:","")]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="110" y="171" width="220" height="33" uuid="974567a2-d040-4032-aecb-7499abdd3fab">
+				<reportElement x="110" y="201" width="220" height="15" uuid="974567a2-d040-4032-aecb-7499abdd3fab">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
 				<textFieldExpression><![CDATA[IF($F{CIF}.equals("A81196743"),"CONTRATO 0737/2016L1","")]]></textFieldExpression>
@@ -380,7 +426,56 @@ Teléfono: 913 817 428 - Fax: 913 820 164 - http://www.necotex.es - email: info@
 		</band>
 	</pageFooter>
 	<lastPageFooter>
-		<band height="155">
+		<band height="252">
+			<componentElement>
+				<reportElement x="0" y="56" width="554" height="114" uuid="3d3ddeb9-9ec1-4dbe-9352-5bf97b98a448"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="notasDataset" uuid="b64ba96f-62e1-489e-affd-f1ab4e8c9db5">
+						<datasetParameter name="Numero_de_factura_ps">
+							<datasetParameterExpression><![CDATA[$P{Numero_de_factura_ps}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="555" uuid="48e32fa6-25d9-468a-9569-f50a41de67d7">
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+						<jr:tableHeader height="15">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<box>
+								<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+								<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+								<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+								<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<staticText>
+								<reportElement x="0" y="0" width="281" height="15" uuid="1017ed71-8918-4c14-bd2c-8217eb49e387">
+									<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+								</reportElement>
+								<text><![CDATA[Referencias:]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="Table_TD" height="15">
+							<box>
+								<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+								<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+								<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+								<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement x="6" y="0" width="549" height="15" uuid="a24728a4-fdf0-4ff8-9cec-5b55127a8e3a">
+									<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+								</reportElement>
+								<box>
+									<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+								</box>
+								<textFieldExpression><![CDATA[$F{COMENTARIOS}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
 			<rectangle>
 				<reportElement x="380" y="7" width="174" height="60" uuid="d860e3c0-8963-4955-be03-3aca6f662434"/>
 			</rectangle>
@@ -470,19 +565,19 @@ Teléfono: 913 817 428 - Fax: 913 820 164 - http://www.necotex.es - email: info@
 				<textFieldExpression><![CDATA[$F{FORMAPAGO}]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Report">
-				<reportElement x="280" y="74" width="100" height="15" uuid="ecec9147-4cf9-4727-8be4-fa384ea2a704">
+				<reportElement x="280" y="171" width="100" height="15" uuid="ecec9147-4cf9-4727-8be4-fa384ea2a704">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
 				<textElement textAlignment="Left"/>
 				<textFieldExpression><![CDATA[" de " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="180" y="74" width="100" height="15" uuid="443d5e9e-afa7-48a0-bd50-a77619071c2a"/>
+				<reportElement x="180" y="171" width="100" height="15" uuid="443d5e9e-afa7-48a0-bd50-a77619071c2a"/>
 				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Opaque" x="0" y="132" width="554" height="23" forecolor="#FFFFFF" backcolor="#000000" uuid="b47f01dd-8bb3-4cde-8ac0-ecb54fc1da04"/>
+				<reportElement mode="Opaque" x="0" y="229" width="554" height="23" forecolor="#FFFFFF" backcolor="#000000" uuid="b47f01dd-8bb3-4cde-8ac0-ecb54fc1da04"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
@@ -490,7 +585,7 @@ Teléfono: 913 817 428 - Fax: 913 820 164 - http://www.necotex.es - email: info@
 Teléfono: 913 817 428 - Fax: 913 820 164 - http://www.necotex.es - email: info@necotex.es]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="90" width="554" height="45" uuid="c4377be3-6ad7-4ea7-96e1-90af4e1cd4d6">
+				<reportElement x="0" y="187" width="554" height="45" uuid="c4377be3-6ad7-4ea7-96e1-90af4e1cd4d6">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
 				<textElement textAlignment="Justified">
