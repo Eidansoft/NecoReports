@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.1.0.final using JasperReports Library version 6.1.0  -->
-<!-- 2017-05-20T12:14:34 -->
+<!-- 2017-05-24T00:01:46 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="pedido_proveedores" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="eb0f4ff1-97d7-414f-bc66-b7ac93b0dd35">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
 	<subDataset name="datosFiscalesDS" uuid="5fcc5745-6ff4-4cd7-8dbe-f4b10c48f765">
@@ -38,9 +38,10 @@ LIMIT 1]]>
 		<queryString>
 			<![CDATA[SELECT sum(com.ImpBruto) subTotal, sum(com.IIva1) iva, com.PIva1 porcentajeIva, sum(com.Total) total
 FROM Compras com JOIN Proveedores pro ON com.NumProveedor = pro.RegProveedor
-WHERE com.IMPTipoCompra = ''
+WHERE com.IMPTipoCompra like '1%'
 AND pro.Codigo = $P!{numero_de_proveedor_PS}
 GROUP BY com.PIva1
+ORDER BY com.PIva1 DESC
 LIMIT 1]]>
 		</queryString>
 		<field name="subTotal" class="java.lang.Float"/>
@@ -65,7 +66,7 @@ LIMIT 1]]>
 		<queryString>
 			<![CDATA[SELECT com.NPedido numPedido
 FROM Compras com JOIN Proveedores pro ON com.NumProveedor = pro.RegProveedor
-WHERE com.IMPTipoCompra = ''
+WHERE com.IMPTipoCompra like '1%'
 AND pro.Codigo =  $P!{numero_de_proveedor_PS}]]>
 		</queryString>
 		<field name="numPedido" class="java.lang.String"/>
@@ -81,9 +82,10 @@ AND pro.Codigo =  $P!{numero_de_proveedor_PS}]]>
 		sum(lin.Pedidas1) Pedidas1, sum(lin.Pedidas2) Pedidas2, sum(lin.Pedidas3) Pedidas3, sum(lin.Pedidas4) Pedidas4, sum(lin.Pedidas5) Pedidas5, sum(lin.Pedidas6) Pedidas6, sum(lin.Pedidas7) Pedidas7, sum(lin.Pedidas8) Pedidas8, sum(lin.Pedidas9) Pedidas9, sum(lin.Pedidas10) Pedidas10, sum(lin.Pedidas11) Pedidas11, sum(lin.Pedidas12) Pedidas12, sum(lin.Pedidas13) Pedidas13, sum(lin.Pedidas14) Pedidas14, sum(lin.Pedidas15) Pedidas15, sum(lin.Pedidas16) Pedidas16, sum(lin.Pedidas17) Pedidas17
 FROM Compras com JOIN CCLineasCompr lin ON com.RegPedido = lin.NumPedido
 				 JOIN Proveedores pro ON com.NumProveedor = pro.RegProveedor
-WHERE com.IMPTipoCompra = ''
+WHERE com.IMPTipoCompra like '1%'
 AND pro.Codigo = $P!{numero_de_proveedor_PS}
-GROUP BY lin.Articulo, lin.Modelo, lin.Descripcion, lin.Color, lin.ColorFabricant, lin.PrecioNetoSI, lin.Talla1, lin.Talla2, lin.Talla3, lin.Talla4, lin.Talla5, lin.Talla6, lin.Talla7, lin.Talla8, lin.Talla9, lin.Talla10, lin.Talla11, lin.Talla12, lin.Talla13, lin.Talla14, lin.Talla15, lin.Talla16, lin.Talla17]]>
+GROUP BY lin.Articulo, lin.Modelo, lin.Descripcion, lin.Color, lin.ColorFabricant, lin.PrecioNetoSI, lin.Talla1, lin.Talla2, lin.Talla3, lin.Talla4, lin.Talla5, lin.Talla6, lin.Talla7, lin.Talla8, lin.Talla9, lin.Talla10, lin.Talla11, lin.Talla12, lin.Talla13, lin.Talla14, lin.Talla15, lin.Talla16, lin.Talla17
+]]>
 	</queryString>
 	<field name="ARTICULO" class="java.lang.String"/>
 	<field name="MODELO" class="java.lang.String"/>
