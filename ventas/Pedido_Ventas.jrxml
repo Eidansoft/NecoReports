@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.1.0.final using JasperReports Library version 6.1.0  -->
-<!-- 2017-05-06T13:12:57 -->
+<!-- 2017-06-23T18:27:35 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Pedido_Ventas" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5f726b7b-bc29-4857-8a2a-373d90af100b">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
 	<parameter name="Numero_pedido_ps" class="java.lang.String"/>
@@ -20,7 +20,7 @@ FROM
 	JOIN Articulos art ON art.RegArticulo = lin.NumArticulo
 WHERE ped.NPedido = $P{Numero_pedido_ps}]]>
 	</queryString>
-	<field name="NPEDIDO" class="java.lang.Integer"/>
+	<field name="NPEDIDO" class="java.lang.Float"/>
 	<field name="esAbono" class="java.lang.String"/>
 	<field name="FECHAPEDIDO" class="java.sql.Date"/>
 	<field name="FECSERVICIOMIN" class="java.sql.Date"/>
@@ -85,13 +85,14 @@ WHERE ped.NPedido = $P{Numero_pedido_ps}]]>
 	<field name="TelefonoE" class="java.lang.String"/>
 	<field name="PAISE" class="java.lang.String"/>
 	<field name="COLORFABRICANTE" class="java.lang.String"/>
+	<field name="codigoArticuloPS" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
 		<band height="192" splitType="Stretch">
 			<rectangle>
-				<reportElement x="0" y="72" width="310" height="120" uuid="9bce3b06-852c-42b9-9425-0ef1673f1256"/>
+				<reportElement x="0" y="72" width="320" height="120" uuid="9bce3b06-852c-42b9-9425-0ef1673f1256"/>
 			</rectangle>
 			<rectangle>
 				<reportElement x="330" y="72" width="224" height="120" uuid="c592a6b8-5684-4e6e-85c2-678e0c437c6a"/>
@@ -113,13 +114,13 @@ WHERE ped.NPedido = $P{Numero_pedido_ps}]]>
 				<imageExpression><![CDATA["letailleur.jpg"]]></imageExpression>
 			</image>
 			<textField>
-				<reportElement x="80" y="82" width="225" height="15" uuid="30f15326-449f-4cee-8f22-645b50bc4a62">
+				<reportElement x="80" y="82" width="230" height="15" uuid="30f15326-449f-4cee-8f22-645b50bc4a62">
 					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 				</reportElement>
 				<textFieldExpression><![CDATA[TEXT($F{NPEDIDO},"#,##0")]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="80" y="157" width="225" height="30" uuid="ea9877f2-c8f2-46fc-be14-5fbd6ebd00a9"/>
+				<reportElement x="80" y="157" width="230" height="30" uuid="ea9877f2-c8f2-46fc-be14-5fbd6ebd00a9"/>
 				<textFieldExpression><![CDATA[$F{COMENTARIOS}]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -134,7 +135,7 @@ WHERE ped.NPedido = $P{Numero_pedido_ps}]]>
 				<text><![CDATA[Razón social:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="80" y="142" width="225" height="15" uuid="08761803-9d82-46e4-83f1-4bb180d54776"/>
+				<reportElement x="80" y="142" width="230" height="15" uuid="08761803-9d82-46e4-83f1-4bb180d54776"/>
 				<textFieldExpression><![CDATA[$F{CONTACTO}]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -158,7 +159,7 @@ WHERE ped.NPedido = $P{Numero_pedido_ps}]]>
 				<text><![CDATA[Fecha entrega:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="80" y="97" width="225" height="15" uuid="6443bef9-4250-47a9-91ab-1e7e4be2965e"/>
+				<reportElement x="80" y="97" width="230" height="15" uuid="6443bef9-4250-47a9-91ab-1e7e4be2965e"/>
 				<textFieldExpression><![CDATA[$F{PEDIDOCLIENTE}]]></textFieldExpression>
 			</textField>
 			<textField>
@@ -181,11 +182,11 @@ WHERE ped.NPedido = $P{Numero_pedido_ps}]]>
 				<text><![CDATA[# Pedido]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="80" y="127" width="225" height="15" uuid="b95ee08f-a274-42fd-9c80-2b735576cf67"/>
+				<reportElement x="80" y="127" width="230" height="15" uuid="b95ee08f-a274-42fd-9c80-2b735576cf67"/>
 				<textFieldExpression><![CDATA[IF($F{FECSERVICIOMIN}.equals(""),"",DATEFORMAT($F{FECSERVICIOMIN},"dd / MM / YYYY"))]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="80" y="112" width="225" height="15" uuid="4a14a261-61d5-4ab3-8e2c-2d09ad0ce0fe"/>
+				<reportElement x="80" y="112" width="230" height="15" uuid="4a14a261-61d5-4ab3-8e2c-2d09ad0ce0fe"/>
 				<textFieldExpression><![CDATA[DATEFORMAT($F{FECHAPEDIDO},"dd / MM / YYYY")]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -353,7 +354,7 @@ WHERE ped.NPedido = $P{Numero_pedido_ps}]]>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="SansSerif" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{ARTICULO}+IF($F{COLOR}.equals(""),"","\n"+$F{COLOR})]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{ARTICULO}+"\n"+$F{codigoArticuloPS}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="0" y="0" width="50" height="32" uuid="976cba59-1a88-48d3-ba21-e1aa9c44c635">
