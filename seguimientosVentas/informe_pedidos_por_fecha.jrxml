@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.1.0.final using JasperReports Library version 6.1.0  -->
-<!-- 2017-07-01T21:48:46 -->
+<!-- 2017-07-01T22:22:34 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Pedido_Ventas" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5f726b7b-bc29-4857-8a2a-373d90af100b">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
 	<style name="Table_TH" mode="Opaque" backcolor="#FFFFFF">
@@ -298,7 +298,7 @@ Teléfono: 913 817 428 - Fax: 913 820 164 - http://www.necotex.es - email: info@
 		</band>
 	</pageFooter>
 	<summary>
-		<band height="120" splitType="Stretch">
+		<band height="146" splitType="Stretch">
 			<rectangle>
 				<reportElement x="0" y="10" width="554" height="40" uuid="95cebeca-d5bf-4d82-9495-aeca0fbb8e15"/>
 			</rectangle>
@@ -356,13 +356,13 @@ Teléfono: 913 817 428 - Fax: 913 820 164 - http://www.necotex.es - email: info@
 				<textFieldExpression><![CDATA[$V{nomCliente1}]]></textFieldExpression>
 			</textField>
 			<break>
-				<reportElement x="0" y="56" width="99" height="1" uuid="bf17d446-c9fb-46f0-ab24-7a1eca05a6c5"/>
+				<reportElement x="0" y="82" width="99" height="1" uuid="bf17d446-c9fb-46f0-ab24-7a1eca05a6c5"/>
 			</break>
 			<break>
-				<reportElement x="0" y="86" width="100" height="1" uuid="09922247-54a3-4025-aeaf-5b43b8d27fc6"/>
+				<reportElement x="0" y="112" width="100" height="1" uuid="09922247-54a3-4025-aeaf-5b43b8d27fc6"/>
 			</break>
 			<subreport>
-				<reportElement x="-20" y="90" width="595" height="30" uuid="ae5c36dd-1331-43ad-a2a3-20bf87ec40e6"/>
+				<reportElement x="-20" y="116" width="595" height="30" uuid="ae5c36dd-1331-43ad-a2a3-20bf87ec40e6"/>
 				<subreportParameter name="fecha_inicio">
 					<subreportParameterExpression><![CDATA[$P{fecha_inicio}]]></subreportParameterExpression>
 				</subreportParameter>
@@ -373,7 +373,7 @@ Teléfono: 913 817 428 - Fax: 913 820 164 - http://www.necotex.es - email: info@
 				<subreportExpression><![CDATA["informe_pedidos_por_fecha_SUBREPORT_porComercial.jrxml"]]></subreportExpression>
 			</subreport>
 			<subreport>
-				<reportElement x="-20" y="60" width="595" height="21" uuid="7270c67f-0871-4998-9f06-94f279f80cac"/>
+				<reportElement x="-20" y="86" width="595" height="21" uuid="7270c67f-0871-4998-9f06-94f279f80cac"/>
 				<subreportParameter name="fecha_inicio">
 					<subreportParameterExpression><![CDATA[$P{fecha_inicio}]]></subreportParameterExpression>
 				</subreportParameter>
@@ -383,8 +383,19 @@ Teléfono: 913 817 428 - Fax: 913 820 164 - http://www.necotex.es - email: info@
 				<subreportParameter name="importeTienda">
 					<subreportParameterExpression><![CDATA[$P{importeTienda}]]></subreportParameterExpression>
 				</subreportParameter>
-				<connectionExpression><![CDATA[$P{REPORT_CONNECTION} ]]></connectionExpression>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 				<subreportExpression><![CDATA["informe_pedidos_por_fecha_SUBREPORT_porTipoCliente.jrxml"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="-20" y="52" width="595" height="23" uuid="ad814432-53ec-4504-aab7-f7762a2424e5"/>
+				<subreportParameter name="fecha_inicio">
+					<subreportParameterExpression><![CDATA[$P{fecha_inicio}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="fecha_fin">
+					<subreportParameterExpression><![CDATA[$P{fecha_fin}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["informe_pedidos_por_fecha_SUBREPORT_abonos.jrxml"]]></subreportExpression>
 			</subreport>
 		</band>
 	</summary>
