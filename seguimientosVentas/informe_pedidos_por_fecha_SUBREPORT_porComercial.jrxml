@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.1.0.final using JasperReports Library version 6.1.0  -->
-<!-- 2017-04-01T01:15:55 -->
+<!-- 2017-07-01T22:38:42 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="informe_pedidos_por_fecha_SUBREPORT_porTipoCliente" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6fc3bc09-4c08-4eab-b298-70a028f5393c">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
 	<parameter name="fecha_inicio" class="java.sql.Date"/>
@@ -11,6 +11,7 @@
 FROM GCPedidos p JOIN Clientes c ON p.NumCliente = c.RegCliente
 WHERE p.FechaPedido >= CAST('$P!{fecha_inicio}' AS timestamp)
 AND p.FechaPedido <= CAST('$P!{fecha_fin}' AS timestamp)
+AND p.Abono = FALSE
 GROUP BY c.TipoCliente]]>
 	</queryString>
 	<field name="comercial" class="java.lang.String"/>
