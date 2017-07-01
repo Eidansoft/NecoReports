@@ -93,7 +93,7 @@ Ventas]]></text>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Resumen de ventas desde el "+DATEFORMAT($P{fecha_inicio},"dd/MM/YYYY")+ " al "+DATEFORMAT($P{fecha_fin},"dd/MM/YYYY")+" ("+new Integer((int)(($P{fecha_fin}.getTime() - $P{fecha_inicio}.getTime())/(1000*60*60*24)))+" días)"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Resumen de pedidos de ventas desde el "+DATEFORMAT($P{fecha_inicio},"dd/MM/YYYY")+ " al "+DATEFORMAT($P{fecha_fin},"dd/MM/YYYY")+" ("+new Integer((int)(($P{fecha_fin}.getTime() - $P{fecha_inicio}.getTime())/(1000*60*60*24)))+" días)"]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageHeader>
