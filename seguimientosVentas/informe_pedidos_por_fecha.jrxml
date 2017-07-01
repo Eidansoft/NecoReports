@@ -39,6 +39,7 @@
 FROM GCPedidos p JOIN Clientes c ON p.NumCliente = c.RegCliente
 WHERE p.FechaPedido >= CAST('$P!{fecha_inicio}' AS timestamp)
 AND p.FechaPedido <= CAST('$P!{fecha_fin}' AS timestamp)
+AND p.Abono = FALSE
 GROUP BY c.Codigo, p.Cliente, c.Poblacion, c.TipoCliente]]>
 	</queryString>
 	<field name="codCliente" class="java.lang.Float"/>
